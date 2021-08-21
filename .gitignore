@@ -1,0 +1,12 @@
+.DS_Store
+yarn.lock
+node_modules
+.idea
+/logs
+/assets/books
+dist
+yarn.lock
+package-lock.json
+*.log
+build
+cfg.js

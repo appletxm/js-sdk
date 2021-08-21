@@ -1,0 +1,96 @@
+{
+  "name": "hf-web-tool",
+  "version": "0.1.16",
+  "private": false,
+  "main": "build/index.common.js",
+  "module": "build/index.esm.js",
+  "files": [
+    "build",
+    "examples",
+    "fav.ico",
+    "index.html"
+  ],
+  "scripts": {
+    "clean": "rimraf build/*",
+    "eslint": "eslint --fix --config .eslintrc.js src/**/*.js",
+    "start": "concurrently --kill-others \"npm run server\" \"npm run rollup:watch\"",
+    "server": "node scripts/server.js",
+    "debug": "concurrently --kill-others \"node --inspect scripts/server.js\" \"npm run rollup:watch\"",
+    "babel": "babel src --out-dir dist --source-maps inline",
+    "babel-watch": "babel src --out-dir dist --watch",
+    "uglify": "uglifyjs build/index.js -o build/index.min.js -c -m",
+    "rollup:watch": "rollup --config config/rollup.config.dev.js --watch",
+    "rollup:build": "rollup --config config/rollup.config.prod.js && npm run uglify",
+    "build": "npm run clean && npm run rollup:build",
+    "buildForProd": "npm run build",
+    "release": "node scripts/release.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@babel/cli": "^7.6.4",
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@babel/preset-env": "^7.6.3",
+    "@babel/runtime-corejs3": "^7.10.2",
+    "axios": "^0.19.2",
+    "babel-eslint": "^10.1.0",
+    "chalk": "2.3.0",
+    "concurrently": "^3.5.1",
+    "core-js": "^3.6.5",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "event-source-polyfill": "0.0.12",
+    "express": "^5.0.0-alpha.7",
+    "formidable": "^1.2.1",
+    "hf-rules": "^0.0.10",
+    "husky": "4.3.8",
+    "ip": "^1.1.4",
+    "log4js": "^3.0.5",
+    "open": "0.0.5",
+    "ora": "1.3.0",
+    "rimraf": "^3.0.2",
+    "rollup": "^1.24.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^6.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-uglify": "^6.0.3",
+    "uglify-js": "^3.8.1"
+  },
+  "browserslist ": [
+    "last 2 version",
+    "> 0.5%",
+    "not dead",
+    "ie >= 10"
+  ],
+  "nodejs": {
+    "version": ">=8.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://175.102.179.36:9011/front-end-base/hf-web-tool"
+  },
+  "keywords": [
+    "es6",
+    "tool"
+  ],
+  "author": "appletxm",
+  "license": "MIT",
+  "bugs": {
+    "url": "http://175.102.179.36:9011/front-end-base/hf-web-tool/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "hf-rules dirFileName --basePath ./",
+      "commit-msg": "hf-rules commitMessage",
+      "pre-push": "npm run eslint"
+    }
+  }
+}

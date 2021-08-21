@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" style="font-size: 100px;">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>web tool 专用工程</title>
+  <link rel="icon" href="fav.ico" />
+  <style>
+    body {
+      font-size: .12rem;
+    }
+
+    #js-tip-panel {
+      margin: .1rem 0;
+      border: 1px solid #eee;
+      padding: .1rem;
+    }
+
+    .cahcek-area {
+      margin: .1rem 0;
+      border: 1px solid #eee;
+      padding: .1rem;
+    }
+
+    .request-queue-panel,
+    .rsa-panel,
+    .validate-panel {
+      margin: .1rem 0;
+      border: 1px solid #eee;
+      padding: .1rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="js-tip-panel">测试网络连接提示</div>
+
+  <div class="cahcek-area">
+    <p>cache test area</p>
+    <button id="cahce-add">添加</button>
+    <button id="cahce-update">更新</button>
+    <button id="cahce-remove">删除项</button>
+    <button id="cahce-clear">清除缓存</button>
+    <button id="cahce-search">搜索内容</button>
+
+    <button id="cache-new-table">创建table2</button>
+    <button id="cache-add-2">添加数据到tale2</button>
+  </div>
+
+  <div class="request-queue-panel">
+    <p>request queue test</p>
+    <button id="trigger-request">发起高频请求</button>
+  </div>
+
+  <div class="rsa-panel">
+    <p>rsa test</p>
+    <input type="text" value="" id="test-rsa"/>
+    after encrypto: <span id="test-rsa-output"></span>
+    <button id="trigger-rsa">rsa</button>
+  </div>
+
+  <div class="validate-panel">
+    <p>身份证号码 test</p>
+    <input type="text" value="" id="test-idcard"/>
+    after test: <span id="test-idcard-output"></span>
+    <button id="trigger-idcard">validateIdCard</button>
+  </div>
+
+  <script src="/examples/eventsource.min.js"></script>
+  <script src="/hot-client"></script>
+
+  <script src="examples/axios.js"></script>
+  <script src="build/index.js"></script>
+  <script src="examples/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+mocks/*/*.*
+scripts/*.js
+src/rsa/*.js
